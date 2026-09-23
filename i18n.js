@@ -2,34 +2,40 @@
 // <button data-lang="xx">XX</button> to the navbar in index.html.
 const TRANSLATIONS = {
   en: {
-    menu: "Menu", nav_about: "About", nav_projects: "Projects", nav_contact: "Contact",
-    tagline: "A free, responsive, one page Bootstrap theme created by Start Bootstrap.",
+    title: "Authorized Translations",
+    home: "Home", menu: "Menu", nav_about: "About", nav_services: "Services", nav_contact: "Contact",
+    hero_title: "Linguistic Solutions",
+    tagline: "Translation. Interpreting. Localization. Linguistic Audit",
     start: "Get Started",
-    about_title: "Built with Bootstrap 5",
-    about_text: "Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href='https://startbootstrap.com/theme/grayscale/'>the preview page.</a> The theme is open source, and you can use it for any purpose, personal or commercial.",
-    p_shoreline: "Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!",
-    p_misty: "An example of where you can put an image of a project, or anything else, along with a description.",
-    p_mountains: "Another example of a project with its respective description. These sections work well responsively as well!",
-    subscribe: "Subscribe to receive updates!", email_ph: "Enter email address...", notify: "Notify Me!",
-    err_required: "An email is required.", err_email: "Email is not valid.",
-    success: "Form submission successful!", error_send: "Error sending message!",
-    address: "Address", email: "Email", phone: "Phone",
-    copyright: "Copyright © Your Website 2023"
+    about_title: "Quality, Attention to detail, Results.",
+    about_text: "These are the principles that guide my work.",
+    s_translations_title: "Translations",
+    s_translations_text: "Legal, medical, technical documents. Book translations and localization services",
+    s_interpreting_title: "Interpreting",
+    s_interpreting_text: "Consecutive interpreting services whenever you need to work with the Romanian government",
+    s_audit_title: "Linguistic Audit",
+    s_audit_text: "English language assessment and lessons for companies and individuals",
+    address: "Address", address_value: "Al. Lipanesti 2, J22 B, floor 4 apartment no. 20",
+    email: "Email", phone: "Phone",
+    copyright: "Copyright © TradAGV 2026"
   },
   ro: {
-    menu: "Meniu", nav_about: "Despre", nav_projects: "Proiecte", nav_contact: "Contact",
-    tagline: "O temă Bootstrap gratuită, responsivă, pe o singură pagină, creată de Start Bootstrap.",
-    start: "Începe",
-    about_title: "Construit cu Bootstrap 5",
-    about_text: "Grayscale este o temă Bootstrap gratuită creată de Start Bootstrap. O poți avea chiar acum, descărcând șablonul de pe <a href='https://startbootstrap.com/theme/grayscale/'>pagina de previzualizare.</a> Tema este open source și o poți folosi în orice scop, personal sau comercial.",
-    p_shoreline: "Grayscale este open source și are licență MIT. Asta înseamnă că îl poți folosi în orice proiect, chiar și comercial! Descarcă-l, personalizează-l și publică-ți site-ul!",
-    p_misty: "Un exemplu de loc unde poți pune imaginea unui proiect, sau orice altceva, împreună cu o descriere.",
-    p_mountains: "Alt exemplu de proiect, cu descrierea lui. Aceste secțiuni se adaptează bine și pe ecrane mici!",
-    subscribe: "Abonează-te pentru a primi noutăți!", email_ph: "Introdu adresa de email...", notify: "Anunță-mă!",
-    err_required: "Adresa de email este obligatorie.", err_email: "Adresa de email nu este validă.",
-    success: "Formular trimis cu succes!", error_send: "Eroare la trimiterea mesajului!",
-    address: "Adresă", email: "Email", phone: "Telefon",
-    copyright: "Drepturi de autor © Site-ul tău 2023"
+    title: "Traduceri autorizate",
+    home: "Acasă", menu: "Meniu", nav_about: "Despre", nav_services: "Servicii", nav_contact: "Contact",
+    hero_title: "Soluții lingvistice",
+    tagline: "Traduceri. Interpretariat. Localizare. Audit lingvistic",
+    start: "Începeți",
+    about_title: "Calitate, atenție la detalii, rezultate.",
+    about_text: "Acestea sunt principiile care îmi ghidează munca.",
+    s_translations_title: "Traduceri",
+    s_translations_text: "Documente juridice, medicale, tehnice. Traduceri de cărți și servicii de localizare",
+    s_interpreting_title: "Interpretariat",
+    s_interpreting_text: "Servicii de interpretariat consecutiv ori de câte ori aveți de colaborat cu autoritățile române",
+    s_audit_title: "Audit lingvistic",
+    s_audit_text: "Evaluarea nivelului de limba engleză și lecții pentru companii și persoane fizice",
+    address: "Adresă", address_value: "Al. Lipănești 2, J22 B, etaj 4, ap. 20",
+    email: "Email", phone: "Telefon",
+    copyright: "Drepturi de autor © TradAGV 2026"
   }
 };
 
@@ -37,11 +43,6 @@ function setLanguage(lang) {
   const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t[el.dataset.i18n]; });
-  document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = t[el.dataset.i18nHtml]; });
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-    el.placeholder = t[el.dataset.i18nPlaceholder];
-    el.setAttribute("aria-label", t[el.dataset.i18nPlaceholder]);
-  });
   document.querySelectorAll("[data-lang]").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
   try { localStorage.setItem("lang", lang); } catch (e) {}
 }
