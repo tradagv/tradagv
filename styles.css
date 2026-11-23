@@ -184,3 +184,46 @@ a.contact__item:hover { background: rgba(169, 187, 220, .12); border-color: var(
   .nav__links a { padding: 1rem 0; border-bottom: 1px solid var(--line); }
   .services, .contact { grid-template-columns: 1fr; }
 }
+
+/* ---------- Page background: soft navy glows + ruled "paper" lines in the hero ----------
+   Colors come from the palette above
+   (--c-navy-light #a9bbdc and --c-navy #1c2b4a). Sections with their own
+   background (.section--tint, .section--dark, footer) stay as they are. */
+
+/* Soft light-navy glows behind the whole page, drifting very slowly */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(40vmax 40vmax at 92% 8%,  rgba(169, 187, 220, .55), transparent 70%),
+    radial-gradient(34vmax 34vmax at 0% 85%,  rgba(169, 187, 220, .40), transparent 70%),
+    radial-gradient(26vmax 26vmax at 45% 45%, rgba(28, 43, 74, .06),    transparent 70%);
+  animation: tgBgDrift 30s ease-in-out infinite alternate;
+}
+
+/* Faint ruled lines, like writing paper, only in the hero, fading out at the bottom */
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 31px, rgba(28, 43, 74, .07) 31px 32px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+          mask-image: linear-gradient(to bottom, #000 70%, transparent);
+}
+
+@keyframes tgBgDrift {
+  to { transform: translate3d(-2%, 3%, 0) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
